@@ -1,5 +1,47 @@
 # LayerKit Change Log
 
+## 0.23.0
+
+#### Public API Changes
+
+* The prefix for identifier URIs on `LYRIdentity` objects has changed from `layer:///identity/` to `layer:///identities/`. [APPS-2403]
+* The `LYRClient` method `connectWithCompletion:` will no longer return `NO` and an error when an authentication challenge is encountered.
+* Deauthenticating the client will no longer result in transport being disconnected.
+* Query controllers will no longer emit will and did change notifications if the result set did not change.
+
+#### Enhancements
+
+* Introduced `allObjects` method on `LYRQueryController` to allow access to all matching objects. [APPS-2470]
+* The `createdAt` property of `LYRConversation` is now a synchronized value. [APPS-2433]
+* Event publication is now prioritized at the network level over data retrieval, resulting in faster message sends during cold sync.
+
+#### Bug Fixes
+
+* Fixes an issue where Layer client would not synchronize the full conversation when user gets added to an existing conversation. [APPS-2406]
+* Fixes an issue where Layer client might crash when a conversation got deleted by another participant. [APPS-2406]
+* Fixes an issue where invoking `[client setDebuggingEnabled:YES]` would make the Client duplicate log lines in the log file.
+* Fixes an issue where Layer client might crash during the synchronization process due to an internal collection mutation during enumeration. [APPS-2406]
+* Fixes an issue where Layer client might crash during transport transitions (e.g. from WiFi to Cellular) or when de-authenticating the client. [APPS-2499]
+* Querying using the `In` or `NotIn` predicates with a non-collection value now returns an error instead of throwing an exception. [APPS-2506]
+* Transport is now disconnected when background time expires to prevent a transient issue with hung sockets.
+* Fixes an issue where Layer client might download the same rich content multiple times causing high network bandwidth and CPU usage. [APPS-2511]
+* Fixes an issue where concurrent operations may crash due to thread-safety violations.
+* Fixes an issue where the synchronization process would get caught in an infinite loop trying to download rich content and applying the updates to the `LYRMessagePart` instance. [APPS-2517]
+* Fixed an issue where transport would not be suspended upon entering the background if you are in the midst of connecting.
+* Fixed an issue where auto-detection of an HTTPS proxy would result in connection errors such as "No endpoints available, unable to connect socket". [APPS-2523]
+* Fixed a crash in `LYRConversation` `markAllMessagesAsRead:` method. [APPS-2510]
+* Fixes a crash in the synchronization process related to a conversation created using the Layer CAPI. [APPS-2527]
+* Fixes a crash in the synchronization process related to conversation deletions. [APPS-2541]
+* Querying for an empty metadata dictionary will now return only conversations without metadata instead of all conversations. [APPS-2447]
+* Fixes an issue where Layer client would ignore the rich content auto-download settings after connecting. [APPS-2545]
+* Fixes an issue where the `LYRConversation`'s '`totalNumberOfMessages` would yield the wrong number even on a fully synchronized client.
+* Request failures within `authenticateWithIdentityToken:completion:` were incorrectly handled as status code mismatches. The correct errors are now returned. [APPS-2548]
+* In cases where participants would send messages back and forth at a higher frequency the messages could get out of order. [APPS-2551]
+* Client won't issue authentication challenges during the de-authentication process anymore. [APPS-2553]
+* Fixes a crash when deserializing metadata with conflicting keys which could happen due to a server-side race condition. [APPS-2550]
+* Query controllers that have not been executed will no longer emit delegate updates. [APPS-2560]
+* Fixes background rich content transfers which could get stuck. [APPS-2557]
+
 ## 0.22.0
 
 This release includes a number of public API changes to make development with LayerKit easier and more expressive in Swift. We have added real classes and types for configuration `options` that previously accepted dictionaries and modeled typing indicators as a class.
@@ -310,7 +352,7 @@ This release includes a number of public API changes to make development with La
 
 * Rewritten the synchronization queuing logic that parallelizes processing per conversation.
 * More reliable push notification handling when using the `synchronizeWithRemoteNotification:completion:` method
-* Added support for building LayerKit as a dynamic framework.  
+* Added support for building LayerKit as a dynamic framework.
 * Added support for bitcode.
 
 ## 0.16.0
@@ -410,7 +452,7 @@ This release includes a number of public API changes to make development with La
 
 #### Bug Fixes
 
-* Fixed crash caused by attempting to add a participant to a conversation they are already in.   
+* Fixed crash caused by attempting to add a participant to a conversation they are already in.
 * Fixed crash caused by attempting to remove a participant from a conversation they are not in.
 * Fixed crash when dealing with huge numbers of Rich Content parts.
 * Fixed an issue where sent messages' recipient statuses seemed to be stuck on `LYRRecipientStatusPending`, even though messages were successfully sent.
@@ -471,15 +513,12 @@ This release includes a number of public API changes to make development with La
 
 #### Public API Changes
 
-* The `LYQuery` initializer has been changed from `queryWithClass:` to `queryWithQueryableClass:`. This avoids the need to wrap `class` in backticks
-when initializing a query object in Swift.
-* The `LYRPredicate` initializer has been changed from `predicateWithProperty:operator:value:` to `predicateWithProperty:predicateOperator:value:`.
-This avoids the need to wrap `operator` in backticks when initializing a predicate object in Swift.
+* The `LYQuery` initializer has been changed from `queryWithClass:` to `queryWithQueryableClass:`. This avoids the need to wrap `class` in backticks when initializing a query object in Swift.
+* The `LYRPredicate` initializer has been changed from `predicateWithProperty:operator:value:` to `predicateWithProperty:predicateOperator:value:`. This avoids the need to wrap `operator` in backticks when initializing a predicate object in Swift.
 * `updateRemoteNotificationDeviceToken:error:` now accepts a `nil` value as the `deviceToken` parameter. This un-registers devices from receiving push notifications.
 * Multiple `LYRClient` instances created with the same appID are not allowed anymore, doing so will cause an assertion.
 * Added `markMessagesAsRead:error:` to `LYRClient` to facilitate batch operations.
-* Update `LYRMessagePart` initializers to enforce MIME Type format using the regular expression "/^[^\\s/]+/[^\\s/]+$/". This ensures that Rich Content message parts
-do not get stuck during upload due to having an invalid MIME Type.
+* Update `LYRMessagePart` initializers to enforce MIME Type format using the regular expression "/^[^\\s/]+/[^\\s/]+$/". This ensures that Rich Content message parts do not get stuck during upload due to having an invalid MIME Type.
 
 #### Bug Fixes
 

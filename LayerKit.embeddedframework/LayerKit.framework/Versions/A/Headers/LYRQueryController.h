@@ -98,6 +98,13 @@
 ///----------------------------------------
 
 /**
+ @abstract Returns all objects in the query result set.
+ @discussion Invoking this method will cache all objects in the paginated result set.
+ @return All objects in the query result set.
+ */
+@property  (nullable, nonatomic, readonly) NSOrderedSet *allObjects;
+
+/**
  @abstract Returns the object for the given index path from the result set.
  @param indexPath The index path for the object to retrieve.
  @return The object at the specified index or `nil` if none could be found.
@@ -137,7 +144,7 @@
  @param completion A block that passes back a BOOL if the execution of the query was successful, and an associated error object if there
  was an error during execution.
  */
-- (void)executeWithCompletion:(nonnull void (^)(BOOL success, NSError * _Nonnull error))completion;
+- (void)executeWithCompletion:(nonnull void (^)(BOOL success, NSError * _Nullable error))completion;
 
 @end
 
