@@ -1,5 +1,19 @@
 # LayerKit Change Log
 
+## 0.23.1
+
+#### Public API Changes
+
+* `LYRQueryController` objects now permit the developer to invoke `execute:` and `executeWithCompletion:` multiple times. This allows for the reconfiguration of queries by mutating the `predicate` or `sortDescriptors` properties of the `LYRQuery` object driving the controller.
+* Setting the `paginationWindow` of an `LYRQueryController` object to zero will now raise an `NSInvalidArgumentException`.
+* The `LYRClientDelegate` method `layerClient:didSwitchToSession:` and `LYRClientDidSwitchSessionNotification` now only get called when client switches between sessions. Previously the client would also notify of the session switch when authenticating for the first time. [APPS-2584]
+
+#### Bug Fixes
+
+* Attempting to wait for an invalid object identifier with the appropriate prefix and number of components (i.e. `layer:///invalid/1234`) will now return an error instead of crashing.
+* Fixes the crash in `LYRClient` creation process, where the internal logic tries to create a background `NSURLSession` and fails to compare the session's delegate with self. This happens due to 3rd party libraries (like Crittercism) that use method swizzling and `NSProxy` objects on `NSURLSessionDelegate`, which causes the pointer comparison to fail. [APPS-2581]
+* The `LYRClient` method `waitForCreationOfObjectWithIdentifier:timeout:completion:` is now guaranteed to always invoke the completion block on the main thread.
+
 ## 0.23.0
 
 #### Public API Changes

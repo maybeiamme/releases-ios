@@ -728,6 +728,7 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 
 /**
  @abstract Waits for the creation of an object with the specified identifier and calls the completion block with the object if found or an error if it times out.
+ @discussion The completion block is always invoked on the main thread.
  @param objectIdentifier The identifier of the object expected to be created.
  @param timeout The specified time the method should wait for the object creation before timing out.
  @param completion The block that will be called once the operation completes with either the expected object or an error.

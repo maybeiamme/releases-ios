@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/LYRClient.h</key>
 		<data>
-		3rE/Lr2iXoaxsQXapOG/47vD4wc=
+		C8c6FO7wosX/ixr4K0aMm+d4/zM=
 		</data>
 		<key>Headers/LYRClientOptions.h</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Headers/LYRQueryController.h</key>
 		<data>
-		b63Uv2rRrFwLmXZyeZRL7YATKdM=
+		ME53EZ8huOPlFJvBEmbMdiel+kE=
 		</data>
 		<key>Headers/LYRSession.h</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Zq6qaTdCWfJRM7QupEB0wHwr88I=
+		vA1ZLtHKya7aXKSE2h5LKx/LM0Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -154,7 +154,7 @@
 		</data>
 		<key>PrivateHeaders/LYRClient+Private.h</key>
 		<data>
-		q0+b1n3bvJK93s1d97gy5nGLbh0=
+		jWGieqW+0vZqPvQu66P0mMhhRIE=
 		</data>
 		<key>PrivateHeaders/LYRClientOptions+Private.h</key>
 		<data>
@@ -801,11 +801,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3rE/Lr2iXoaxsQXapOG/47vD4wc=
+			C8c6FO7wosX/ixr4K0aMm+d4/zM=
 			</data>
 			<key>hash2</key>
 			<data>
-			zUnF4kyHmRaUyRTkmHxJ3hwsLN/OOQN/++6r6WP6+2o=
+			pkgM2wJoW/4nh8gZb1oqLk9fG4Ccm+UDdmdYoEvja58=
 			</data>
 		</dict>
 		<key>Headers/LYRClientOptions.h</key>
@@ -955,11 +955,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			b63Uv2rRrFwLmXZyeZRL7YATKdM=
+			ME53EZ8huOPlFJvBEmbMdiel+kE=
 			</data>
 			<key>hash2</key>
 			<data>
-			WU8XPmNqHpY7ome0yyUCQFi2+F7Z5EliDiymVU1XAMs=
+			1M3qtbiw7uFgFa5x0LY7ynNMZdqjfSBDfDcbeLem9Nk=
 			</data>
 		</dict>
 		<key>Headers/LYRSession.h</key>
@@ -1175,11 +1175,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			q0+b1n3bvJK93s1d97gy5nGLbh0=
+			jWGieqW+0vZqPvQu66P0mMhhRIE=
 			</data>
 			<key>hash2</key>
 			<data>
-			V46CP0KpZtgd8E+NOye1cYTGKEO5qQ7FmnZ9eX//+f4=
+			JCjEfOfSx8l9YXYty1rI/TN6RJEiDNYZQIU9aeTv3yo=
 			</data>
 		</dict>
 		<key>PrivateHeaders/LYRClientOptions+Private.h</key>

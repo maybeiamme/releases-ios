@@ -51,9 +51,9 @@
  where the most recent messages are displayed on the bottom of the view and the chronologically older messages are displayed at the top.
  
  As the user scrolls to the top or taps a "Load More" button, the window can be expanded to performantly load additional messages into the collection. The pagination window can expand as objects are added to the result set due to incoming events.
+ @raises NSInvalidArgumentException Raised if a value of zero is given.
  */
 @property (nonatomic) NSInteger paginationWindow;
-
 
 /**
  @abstract Returns the total number of objects in the query result set without pagination.
@@ -133,6 +133,9 @@
 
 /**
  @abstract Executes the query and loads a result set into the receiver.
+ @discussion Executing the Query Controller after the first execution is useful in cases where
+ there's a need to change the order of the objects (by changing the `sortDescriptors`) or
+ filtering the results (by changing the `predicate`).
  @param error A pointer to an error object that upon failure is set to an error object that describes 
  the nature of the failure.
  @return A Boolean value that indicates if execution of the query was successful.
@@ -141,6 +144,7 @@
 
 /**
  @abstract Executes the query asynchronously and loads a result and error in a completion block.
+ @discussion See the discussion on the `execute:` method.
  @param completion A block that passes back a BOOL if the execution of the query was successful, and an associated error object if there
  was an error during execution.
  */
