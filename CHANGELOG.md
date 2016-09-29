@@ -1,5 +1,12 @@
 # LayerKit Change Log
 
+## 0.23.2
+
+#### Bug Fixes
+
+* The `isConnecting` method of `LYRClient` objects will no longer return `YES` when `isConnected` is also true.
+* Conversation metadata changes more consistent across clients, when mutating it from multiple clients at once.
+
 ## 0.23.1
 
 #### Public API Changes
