@@ -1,5 +1,21 @@
 # LayerKit Change Log
 
+## 0.23.3
+
+#### Bug Fixes
+
+* Fixes an issue where the client might fail to start synchronization process for a conversation upon receiving a remote notification. [APPS-2595]
+* Fixes an issue where the client might throw an exception ("Cannot initialize synchronization manager with `nil` databaseManager.") when transitioning the app from the background into the foreground.
+* Fixes an issue where the client wouldn't finish synchronizing content when woken up by a remote notification with an error "Synchronization from a remote notification could not be completed because synchronization failed to finish in 15 seconds.".
+* `LYRIdentity` object identifier attribute now correctly escapes the `userID` string (this includes the following characters: `:;#@`). [APPS-2627]
+* Fixes an issue where the authenticated user's identity (when accessing `client.authenticatedUser`) might lose all the information (`firstName`, `lastName`, `displayName`, `metadata`... ended up being `nil`). [APPS-2630]
+
+#### Public API Changes
+
+* Made the `createdAt` attribute on the `LYRConversation` nullable, which solves the issues with Swift.
+* Removed dead code around the `LYRActor` class.
+* Updated `LYRQueryController` header documentation.
+
 ## 0.23.2
 
 #### Bug Fixes
