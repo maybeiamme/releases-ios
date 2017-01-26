@@ -1,5 +1,31 @@
 # LayerKit Change Log
 
+## 0.24.0
+
+#### Public API Changes
+
+* Added the `paginatedObjects` property on the `LYRQueryController` to access the subset of objects in a paginated query result set.
+
+#### Enhancements
+
+* Performance improvements when dealing with high volume of conversations (reducing the memory and CPU usage). [APPS-2521]
+* Performance improvements when receiving new conversations in real-time. [APPS-2603]
+* Performance improvements when an already synchronized client reconnects. [APPS-2641]
+* Performance improvements when performing synchronization upon receiving remote notifications. [APPS-2651]
+* Performance improvements when cold-syncing client by prioritizing conversation synchronization for the most recent conversations. [APPS-2669]
+
+#### Bug Fixes
+
+* Fixes an issue where `LYRQueryController`'s access to `allObjects` could crash if `paginationWindow` was smaller than `totalNumberOfObjects`.
+* Fixes a bug where the `LYRQueryController` wouldn't allow querying for conversations based on the `lastMessage` property. [APPS-2664]
+* Fixed an issue where metadata mutations would leak transient copies of `NSDictionary` objects. [APPS-2599]
+* Client now deallocates public API objects (`LYRConversation`, `LYRMessage`, `LYRMessagePart` and `LYRIdentity`) when they're not in use anymore.
+* Conversation metadata changes more consistent across clients, when changing it from multiple clients.
+* Fixes an issue where a client could crash during synchronization in response to a push notification of a conversation that was deleted before the client could perform the synchronization process. [APPS-2654]
+* Fixes the connection issues when the client is initialized with the app being launched in background (e.g. due to silent remote notification). [APPS-2566], [APPS-2666]
+* Client can now recover from bad database migrations, which could occur when running a new version of the client after an old one crashed. [APPS-2727].
+* Fixes an issue where de-authenticating the client might crash with the `malloc: *** error for object 0xXXXXXXXXXXX: pointer being freed was not allocated` message.
+
 ## 0.23.3
 
 #### Bug Fixes
