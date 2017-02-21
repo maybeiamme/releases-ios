@@ -196,6 +196,15 @@ extern NSString * _Nonnull const LYRConversationSynchronizationProgressUserInfoK
  */
 @property (nonatomic, readonly) BOOL deliveryReceiptsEnabled;
 
+/**
+ @abstract Returns a Boolean value that indicates if read receipts are enabled. When `YES`,
+ messages can be marked as read and a delineation will be made between `LYRRecipientStatusDelivered`
+ and `LYRRecipientStatusRead`. When `NO`, messages will be in the `LYRRecipientStatusRead` state implicitly.
+ @discussion Conversations with read receipts disabled can have up to 250 participants.
+ It also improves performance for conversations that do not benefit from them.
+ */
+@property (nonatomic, readonly) BOOL readReceiptsEnabled;
+
 ///-----------------------
 /// @name Sending Messages
 ///-----------------------
@@ -298,6 +307,7 @@ extern NSString * _Nonnull const LYRConversationSynchronizationProgressUserInfoK
  @param error A pointer to an error that upon failure is set to an error object describing why the deletion failed.
  @return A Boolean value indicating if the request to leave the conversation was submitted for synchronization.
  @discussion A user can only leave a conversation if they are a current participant and the conversation has not been deleted.
+ @warning This feature is not supported for conversations that have more than 25 participants (conversations with `deliveryReceiptsEnabled` set to `NO`).
  */
 - (BOOL)leave:(NSError * _Nullable * _Nullable)error __attribute__((swift_error(none)));
 

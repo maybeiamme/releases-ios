@@ -157,7 +157,8 @@ extern NSString * _Nonnull const LYRMessageOptionsPushNotificationConfigurationK
 
 /**
  @abstract Returns a dictionary keyed the user ID of all participants in the Conversation that the receiver belongs to and whose
- values are an `NSNumber` representation of the receipient status (`LYRRecipientStatus` value) for their corresponding key.
+ values are an `NSNumber` representation of the receipient status (`LYRRecipientStatus` value) for their corresponding key;
+ or returns `nil` in case the message belongs to a conversation with more than 25 participants.
  */
 @property (nonatomic, readonly, nullable) NSDictionary<NSString *, NSNumber *> *recipientStatusByUserID;
 
@@ -165,7 +166,8 @@ extern NSString * _Nonnull const LYRMessageOptionsPushNotificationConfigurationK
  @abstract Retrieves the message state for a given participant in the conversation.
  
  @param userID The user ID to retrieve the message status for.
- @return An `LYRRecipientStatus` value specifying the message status for the given participant or `LYRRecipientStatusInvalid` if the specified user is not a participant in the conversation.
+ @return An `LYRRecipientStatus` value specifying the message status for the given participant or `LYRRecipientStatusInvalid` if the specified user is not a participant in the conversation;
+ In case the message belongs to a conversation with more than 25 participants, the method will always return `LYRRecipientStatusRead`.
  */
 - (LYRRecipientStatus)recipientStatusForUserID:(nonnull NSString *)userID;
 

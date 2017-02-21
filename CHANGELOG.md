@@ -1,5 +1,19 @@
 # LayerKit Change Log
 
+## 0.25.0
+
+#### Public API Changes
+
+* Added the `readReceiptsEnabled` property on the `LYRConversation` instance which indicates if the read receipts can be issued for the given channel. Conversations with read receipts disabled can have more than 25 participants. [APPS-2688]
+
+#### Bug Fixes
+
+* Fixes an issue where the identifier property of an `LYRIdentity` could yield nil. [APPS-2722]
+* Fixes an issue where in some cases the client would only sync the last most recent messages of each conversation and then stop the process ending with an incomplete sync. [APPS-2780]
+* Added nullability annotations for `LYRIdentity` to ensure appropriate handling in Swift.
+* Fixed an issue where typing indicators events could be over-published.
+* Fixed an issue where `synchronizeWithRemoteNotification:completion:` would disconnect transport unnecessarily.
+
 ## 0.24.0
 
 #### Public API Changes
