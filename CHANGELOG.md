@@ -1,5 +1,21 @@
 # LayerKit Change Log
 
+## 0.25.1
+
+#### Bug Fixes
+
+* Fixes an issue where identities' properties weren't getting synchronized. [APPS-2791]
+* Fixes an issue where creating a conversation with the same set of participants as the conversation that was previously deleted used to have, could render the newly created conversation invalid. [APPS-2787]
+
+#### Enhancements
+
+* Added support for querying `LYRIdentity`'s `metadata` key with `LYRPredicateOperatorIsNotEqualTo`. [APPS-2791]
+* Added support for querying `LYRIdentity`'s `metadata` key against a `nil` value. [APPS-2791]
+
+#### Public API Changes
+
+* Added reinforcement that prevents adding participants with an empty string for their `userID`. [APPS-2791]
+
 ## 0.25.0
 
 #### Public API Changes
