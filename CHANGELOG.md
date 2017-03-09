@@ -1,5 +1,11 @@
 # LayerKit Change Log
 
+## 0.25.2
+
+#### Bug Fixes
+
+* Fixes an issue where a client might make a conversation object disappear temporarily. [APPS-2819]
+
 ## 0.25.1
 
 #### Bug Fixes
