@@ -87,7 +87,7 @@ CREATE TABLE "identities" (
   followed BOOLEAN NOT NULL DEFAULT 0,
   should_follow INTEGER NOT NULL DEFAULT 0,
   version INTEGER NOT NULL,
-  deleted_at DATETIME,
+  deleted_at DATETIME, presence_status INTEGER NON NULL, last_seen_at DATETIME,
   UNIQUE(database_identifier)
 );
 
@@ -662,3 +662,5 @@ INSERT INTO schema_migrations (version) VALUES (20160809124256556);
 INSERT INTO schema_migrations (version) VALUES (20170126134838315);
 
 INSERT INTO schema_migrations (version) VALUES (20170127110027836);
+
+INSERT INTO schema_migrations (version) VALUES (20170327121113144);

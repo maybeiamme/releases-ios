@@ -614,6 +614,14 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 ///---------------
 
 /**
+ @abstract Set the presence status of the authenticated user.
+ @param error A pointer to an error object that, upon failure, will be set to an error describing why the presence status could not be set.
+ @discussion To inspect client's presence status, use the following expression `client.authenticatedUser.presenceStatus;`.
+ @return A Boolean value indicating if the operation of setting the presence information succeeded.
+ */
+- (BOOL)setPresenceStatus:(LYRIdentityPresenceStatus)presenceStatus error:(NSError * _Nullable * _Nullable)error;
+
+/**
  @abstract Follows a set of userIDs and creates local queryable identities.
  @param userIDs A set of userIDs to be followed.
  @param error A pointer to an error object that, upon failure, will be set to an error describing why the userIDs could not be followed.

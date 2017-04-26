@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LYRQuery.h"
 #import "LYRConstants.h"
+#import "LYRTypingIndicator.h"
 
 @class LYRMessage;
 @class LYRIdentity;
@@ -75,37 +76,6 @@ extern NSString * _Nonnull const LYRConversationDidReceiveTypingIndicatorNotific
  an `LYRTypingIndicator` instance containing the typing indicator action and the participant's identity that caused the action.
  */
 extern NSString * _Nonnull const LYRTypingIndicatorObjectUserInfoKey;
-
-///-----------------------
-/// @name Typing Indicator
-///-----------------------
-
-/**
- @abstract The `LYRTypingIndicatorAction` enumeration describes the states of a typing status of a participant in a conversation.
- */
-typedef NS_ENUM(NSUInteger, LYRTypingIndicatorAction) {
-    LYRTypingIndicatorActionBegin   = 0,
-    LYRTypingIndicatorActionPause   = 1,
-    LYRTypingIndicatorActionFinish  = 2
-};
-
-/**
- @abstract The `LYRTypingIndicator` object encapsulated the typing indicator action value and the participant
- identity which is bundled in the `LYRConversationDidReceiveTypingIndicatorNotification`'s userInfo.
- */
-@interface LYRTypingIndicator : NSObject
-
-/**
- @abstract The action value that represents the last typing indicator state that the participant caused.
- */
-@property (nonatomic, readonly) LYRTypingIndicatorAction action;
-
-/**
- @abstract Participant that caused the last typing indicator action.
- */
-@property (nonatomic, readonly, nonnull) LYRIdentity *sender;
-
-@end
 
 ///-------------------------------------------------
 /// @name Conversation Synchronization Notifications

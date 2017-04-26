@@ -92,10 +92,13 @@ typedef NS_ENUM(NSUInteger, LYRClientError) {
     LYRClientErrorMessageDeleted                    = 11001,
     LYRClientErrorConversationDeleted               = 11002,
     LYRClientErrorInvalidClassType                  = 11003,
-    
+
     // Session Errors
     LYRClientErrorInvalidSession                    = 12001,
     LYRClientErrorDuplicateSession                  = 12002,
+
+    // Presence
+    LYRClientErrorFailedUpdatingPresence            = 13001
 };
 
 extern NSString * _Nonnull const LYRErrorAuthenticatedUserIDUserInfoKey;

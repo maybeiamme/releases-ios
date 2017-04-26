@@ -9,6 +9,33 @@
 #import <Foundation/Foundation.h>
 #import "LYRQuery.h"
 
+typedef NS_ENUM(NSUInteger, LYRIdentityPresenceStatus) {
+    /**
+     @abstract No clients associated with the Identity are currently online or are explicitly marked as invisible.
+     */
+    LYRIdentityPresenceStatusOffline,
+
+    /**
+     @abstract One or more clients associated with the Identity are online and available.
+     */
+    LYRIdentityPresenceStatusAvailable,
+
+    /**
+     @abstract One or more clients associated with the Identity are online, but marked as busy.
+     */
+    LYRIdentityPresenceStatusBusy,
+
+    /**
+     @abstract One or more clients associated with the Identity are online, but marked as away from the device.
+     */
+    LYRIdentityPresenceStatusAway,
+
+    /**
+     @abstract The current authenticated user is set as invisible. This status is only available for the authenticated user. Invisible followed users appear as unavailable.
+     */
+    LYRIdentityPresenceStatusInvisible
+};
+
 @class LYRMessage;
 
 /**
@@ -83,5 +110,17 @@
  @discussion The `followed` property is queryable via the `LYRPredicateOperatorIsEqualTo`, `LYRPredicateOperatorIsNotEqualTo`, `LYRPredicateOperatorIsIn`, and `LYRPredicateOperatorIsNotIn` operators.  `YES` if the identity has been synchronized with Layer's platform.
  */
 @property (nonatomic, readonly) BOOL followed LYR_QUERYABLE_PROPERTY;
+
+/**
+ @abstract The presence status of the identity.
+ @discussion The `presenceStatus` property is queryable via the `LYRPredicateOperatorIsEqualTo`, `LYRPredicateOperatorIsNotEqualTo`, `LYRPredicateOperatorIsIn`, and `LYRPredicateOperatorIsNotIn` operators.
+ */
+@property (nonatomic, assign, readonly) LYRIdentityPresenceStatus presenceStatus LYR_QUERYABLE_PROPERTY;
+
+/**
+ @abstract A timestamp indicating when the user was last seen online.
+ @discussion The `createdAt` property is queryable using all predicate operators except for `LYRPredicateOperatorLike`.
+ */
+@property (nonatomic, readonly, nullable) NSDate *lastSeenAt LYR_QUERYABLE_PROPERTY;
 
 @end

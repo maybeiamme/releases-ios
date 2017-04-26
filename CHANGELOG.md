@@ -1,5 +1,25 @@
 # LayerKit Change Log
 
+## 0.26.0
+
+Introducing the presence feature, which allows you to set the authenticated user's own presence status that gets synchronized across the clients that follow the authenticated user. [APPS-2740]
+
+#### Public API Changes
+
+* Added two new read-only accessors `presenceStatus` and `lastSeenAt` to the `LYRIdentity` interface.
+* Added a method on the `LYRClient` `setPresenceStatus:error:` which allows you to set the presence information for the current user.
+
+#### Bug Fixes
+
+* Fixes an issue where `LYRIdentity` instances wouldn't update the `followed` property correctly. [APPS-2950]
+* Fixes an issue where the `LYRQueryController` would not respond to `LYRIdentity` changes.
+
+## 0.25.3
+
+#### Enhancements
+
+* Optimized the sync process when dealing with larger amount of conversations. [APPS-2831]
+
 ## 0.25.2
 
 #### Bug Fixes
