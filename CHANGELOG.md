@@ -1,5 +1,11 @@
 # LayerKit Change Log
 
+## 0.26.1
+
+#### Bug Fixes
+
+* Fixes an issue where the framework did not include the bitcode binaries.
+
 ## 0.26.0
 
 Introducing the presence feature, which allows you to set the authenticated user's own presence status that gets synchronized across the clients that follow the authenticated user. [APPS-2740]
