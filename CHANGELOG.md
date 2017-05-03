@@ -1,5 +1,11 @@
 # LayerKit Change Log
 
+## 0.26.2
+
+#### Bug Fixes
+
+* Fixes an issue where the query controller wouldn't register identity changes via `conversation.participants`, which is crucial when wanting to get notified of `presenceStatus` updates when querying for conversations.
+
 ## 0.26.1
 
 #### Bug Fixes
