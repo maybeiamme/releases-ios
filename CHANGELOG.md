@@ -1,5 +1,11 @@
 # LayerKit Change Log
 
+## 0.26.3
+
+#### Bug Fixes
+
+* Fixes an issue where `LYRIdentity` object instances wouldn't get updates regularly.
+
 ## 0.26.2
 
 #### Bug Fixes
