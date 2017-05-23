@@ -1,5 +1,16 @@
 # LayerKit Change Log
 
+## 0.26.4
+
+#### Bug Fixes
+
+* Improved stability in cases where the Layer Platform provides inconsistent data due to the nature of eventual consistency. [IOS-3039]
+* Fixes an issue where the client could crash on `-deauthenticate` invocation. [IOS-3036]
+
+#### Enhancements
+
+* Added basic telemetry measurements to gather environmental and performance data. [IOS-2730]
+
 ## 0.26.3
 
 #### Bug Fixes
