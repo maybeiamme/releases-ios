@@ -1,5 +1,12 @@
 # LayerKit Change Log
 
+## 0.26.5
+
+#### Bug Fixes
+
+* Fixes an issue where the client could crash when receiving a message from a bot identity. [IOS-3061]
+* Fixes an issue where enabled debug logging could throw an exception.
+
 ## 0.26.4
 
 #### Bug Fixes

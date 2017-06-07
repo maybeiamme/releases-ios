@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name = "LayerKit"
-  s.version = "0.26.4"
+  s.version = "0.26.5"
   s.summary = "LayerKit is the iOS client interface for the Layer communications cloud."
   s.license = "Commercial"
-  s.authors = {"Blake Watters"=>"blake@layer.com", "Klemen Verdnik"=>"klemen@layer.com"}
+  s.authors = {"Andrew McKnight"=>"andrew@layer.com", "Blake Watters"=>"blake@layer.com", "Klemen Verdnik"=>"klemen@layer.com"}
   s.homepage = 'http://layer.com'
   s.libraries = ["z", "sqlite3"]
   s.requires_arc = true
